@@ -72,6 +72,67 @@ export default async function PostPage({
 
   const htmlContent = markdownToHtml(post.content);
 
+  // Category-specific research sources for E-E-A-T signals
+  const researchSources: Record<string, { title: string; url: string; source: string }[]> = {
+    "Sleep Science": [
+      { title: "Sleep Deprivation and Deficiency", url: "https://www.nhlbi.nih.gov/health/sleep-deprivation", source: "NIH / NHLBI" },
+      { title: "Stages of Sleep", url: "https://www.sleepfoundation.org/stages-of-sleep", source: "Sleep Foundation" },
+      { title: "How Much Sleep Do We Really Need?", url: "https://www.sleepfoundation.org/how-sleep-works/how-much-sleep-do-we-really-need", source: "Sleep Foundation" },
+    ],
+    "Relationship Science": [
+      { title: "Sleep and Relationship Functioning", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4826698/", source: "PubMed Central" },
+      { title: "How Sleep Affects Your Relationships", url: "https://www.sleepfoundation.org/sleep-news/how-sleep-affects-relationships", source: "Sleep Foundation" },
+      { title: "Sleep and Emotions", url: "https://www.apa.org/topics/sleep/why", source: "American Psychological Association" },
+    ],
+    "HRV & Health": [
+      { title: "Heart Rate Variability Overview", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5624990/", source: "PubMed Central" },
+      { title: "Healthy Sleep", url: "https://www.nhlbi.nih.gov/health/sleep", source: "NIH / NHLBI" },
+      { title: "Sleep and Heart Health", url: "https://www.sleepfoundation.org/physical-health/sleep-and-heart-health", source: "Sleep Foundation" },
+    ],
+    "Apple Watch & Tech": [
+      { title: "Consumer Sleep Technology", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6934098/", source: "PubMed Central" },
+      { title: "Wearable Sleep Trackers", url: "https://www.sleepfoundation.org/sleep-topics/sleep-trackers", source: "Sleep Foundation" },
+      { title: "Sleep Tracking Accuracy", url: "https://www.sleepfoundation.org/sleep-topics/sleep-trackers", source: "Sleep Foundation" },
+    ],
+    "Sleep Tips": [
+      { title: "Sleep Hygiene", url: "https://www.sleepfoundation.org/sleep-hygiene", source: "Sleep Foundation" },
+      { title: "Healthy Sleep Tips", url: "https://www.nhlbi.nih.gov/health/sleep/good-sleep-habits", source: "NIH / NHLBI" },
+      { title: "Sleep Health", url: "https://www.cdc.gov/sleep/index.html", source: "CDC" },
+    ],
+    "SleepTwo Guide": [
+      { title: "Sleeping with a Partner", url: "https://www.sleepfoundation.org/sleep-topics/sleeping-with-partner", source: "Sleep Foundation" },
+      { title: "Sleep and Relationship Quality", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4826698/", source: "PubMed Central" },
+      { title: "Healthy Sleep", url: "https://www.nhlbi.nih.gov/health/sleep", source: "NIH / NHLBI" },
+    ],
+    "Relationship Tips": [
+      { title: "Sleep and Relationship Functioning", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4826698/", source: "PubMed Central" },
+      { title: "Sleep and Emotions", url: "https://www.apa.org/topics/sleep/why", source: "American Psychological Association" },
+      { title: "How Sleep Affects Your Relationships", url: "https://www.sleepfoundation.org/sleep-news/how-sleep-affects-relationships", source: "Sleep Foundation" },
+    ],
+    "Life Stages": [
+      { title: "Sleep Across the Lifespan", url: "https://www.sleepfoundation.org/how-sleep-works/sleep-facts-statistics", source: "Sleep Foundation" },
+      { title: "Sleep and Older Adults", url: "https://www.nia.nih.gov/health/sleep/good-nights-sleep", source: "NIH / National Institute on Aging" },
+      { title: "Healthy Sleep", url: "https://www.nhlbi.nih.gov/health/sleep", source: "NIH / NHLBI" },
+    ],
+    "Sleep Issues": [
+      { title: "Insomnia", url: "https://www.sleepfoundation.org/insomnia", source: "Sleep Foundation" },
+      { title: "Sleep Disorders", url: "https://www.nhlbi.nih.gov/health/sleep-disorders", source: "NIH / NHLBI" },
+      { title: "Snoring and Sleep", url: "https://www.sleepfoundation.org/snoring", source: "Sleep Foundation" },
+    ],
+    "App Reviews": [
+      { title: "Consumer Sleep Technology", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6934098/", source: "PubMed Central" },
+      { title: "Wearable Sleep Trackers", url: "https://www.sleepfoundation.org/sleep-topics/sleep-trackers", source: "Sleep Foundation" },
+      { title: "Healthy Sleep", url: "https://www.nhlbi.nih.gov/health/sleep", source: "NIH / NHLBI" },
+    ],
+    Technology: [
+      { title: "Consumer Sleep Technology", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6934098/", source: "PubMed Central" },
+      { title: "Wearable Sleep Trackers", url: "https://www.sleepfoundation.org/sleep-topics/sleep-trackers", source: "Sleep Foundation" },
+      { title: "Sleep Health", url: "https://www.cdc.gov/sleep/index.html", source: "CDC" },
+    ],
+  };
+
+  const sources = researchSources[post.category] ?? researchSources["Sleep Tips"];
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -86,12 +147,19 @@ export default async function PostPage({
     },
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
-    author: {
-      "@type": "Organization",
-      "@id": "https://sleeptwo.app/#organization",
-      name: "SleepTwo",
-      url: "https://sleeptwo.app",
-    },
+    author: [
+      {
+        "@type": "Organization",
+        "@id": "https://sleeptwo.app/#organization",
+        name: "SleepTwo",
+        url: "https://sleeptwo.app",
+      },
+      {
+        "@type": "Person",
+        name: "SleepTwo Team",
+        url: "https://sleeptwo.app/about",
+      },
+    ],
     publisher: {
       "@type": "Organization",
       "@id": "https://sleeptwo.app/#organization",
@@ -222,17 +290,87 @@ export default async function PostPage({
 
         {/* Article content */}
         <article className="max-w-3xl mx-auto px-6 py-12">
-          <p
-            className="text-lg leading-relaxed mb-8 font-medium"
-            style={{ color: "var(--muted)" }}
+
+          {/* Author byline */}
+          <div className="flex items-center gap-3 mb-8">
+            <div
+              className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: "linear-gradient(135deg, var(--pa), var(--pb))" }}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6a5 5 0 0 1 10 0H3z" fill="white"/>
+              </svg>
+            </div>
+            <div>
+              <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
+                SleepTwo Team
+              </p>
+              <p className="text-xs" style={{ color: "var(--muted)" }}>
+                {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })} · {post.readTime} min read
+              </p>
+            </div>
+          </div>
+
+          {/* Key insight box — answer-first for AI extraction */}
+          <div
+            className="rounded-2xl p-5 mb-8"
+            style={{
+              background: "rgba(124,58,237,0.07)",
+              borderLeft: "3px solid var(--pa)",
+            }}
           >
-            {post.description}
-          </p>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--pa)" }}>
+              Key insight
+            </p>
+            <p className="leading-relaxed" style={{ color: "var(--text)" }}>
+              {post.description}
+            </p>
+          </div>
 
           <div
             className="prose-sleeptwo"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
+
+          {/* Research sources */}
+          <div
+            className="mt-12 rounded-2xl p-6"
+            style={{ background: "rgba(255,255,255,0.03)", border: "1px solid var(--border)" }}
+          >
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-4"
+              style={{ color: "var(--muted)" }}
+            >
+              Research &amp; further reading
+            </p>
+            <ul className="space-y-3">
+              {sources.map((s) => (
+                <li key={s.url} className="flex items-start gap-2 text-sm">
+                  <svg className="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7h10M7 2l5 5-5 5" stroke="var(--pa)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span>
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-2 transition-colors hover:text-white"
+                      style={{ color: "var(--muted)" }}
+                    >
+                      {s.title}
+                    </a>
+                    <span className="ml-1.5 text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
+                      — {s.source}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Download CTA */}
           <div

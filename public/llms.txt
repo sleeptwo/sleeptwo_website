@@ -99,6 +99,7 @@ No. SleepTwo is iOS-only and requires Apple Watch. Android support is not planne
 ## Key Pages
 
 - [Homepage](https://sleeptwo.app) — Product overview, features, pricing, download
+- [About](https://sleeptwo.app/about) — Our story, mission, and the team behind SleepTwo
 - [Blog](https://sleeptwo.app/blog) — 52 articles on couples sleep, sleep science, HRV, Apple Watch tracking, relationship health
 - [Privacy Policy](https://sleeptwo.app/privacy) — How SleepTwo collects, uses, and protects your data
 - [Terms of Service](https://sleeptwo.app/terms) — Usage terms and Together Pro subscription terms

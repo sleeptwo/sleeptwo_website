@@ -44,6 +44,7 @@ export default function Nav() {
           { label: "Features",     anchor: "features"      },
           { label: "How it works", anchor: "how-it-works"  },
           { label: "Pricing",      anchor: "pricing"       },
+
         ].map(({ label, anchor }) => (
           <a
             key={label}
@@ -64,6 +65,15 @@ export default function Nav() {
           onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
         >
           Blog
+        </Link>
+        <Link
+          href="/about"
+          className="text-sm transition-colors"
+          style={{ color: pathname === "/about" ? "var(--text)" : "var(--muted)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+        >
+          About
         </Link>
       </div>
 
