@@ -5,6 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sleeptwo.app"),
   title: "SleepTwo — Couples Sleep Tracking",
   description: "Track sleep together. See how in sync you really are. SleepTwo gives couples a nightly compatibility score and goodnight messages — all from your Apple Watch.",
   icons: {
