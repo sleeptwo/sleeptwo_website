@@ -217,11 +217,11 @@ export default function PrivacyPage() {
             <P>
               To exercise any of these rights, contact us at{" "}
               <a
-                href="mailto:hello@sleeptwo.app"
+                href="mailto:support@sleeptwo.app"
                 className="underline underline-offset-2"
                 style={{ color: "var(--pa)" }}
               >
-                hello@sleeptwo.app
+                support@sleeptwo.app
               </a>
               . We will respond within 30 days.
             </P>
@@ -263,11 +263,11 @@ export default function PrivacyPage() {
             <P>
               <strong style={{ color: "var(--text)" }}>Email:</strong>{" "}
               <a
-                href="mailto:hello@sleeptwo.app"
+                href="mailto:support@sleeptwo.app"
                 className="underline underline-offset-2"
                 style={{ color: "var(--pa)" }}
               >
-                hello@sleeptwo.app
+                support@sleeptwo.app
               </a>
             </P>
           </Section>

@@ -266,11 +266,11 @@ export default function TermsPage() {
             <P>
               <strong style={{ color: "var(--text)" }}>Email:</strong>{" "}
               <a
-                href="mailto:hello@sleeptwo.app"
+                href="mailto:support@sleeptwo.app"
                 className="underline underline-offset-2"
                 style={{ color: "var(--pb)" }}
               >
-                hello@sleeptwo.app
+                support@sleeptwo.app
               </a>
             </P>
           </Section>
