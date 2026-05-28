@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,14 +22,7 @@ export default function Nav() {
     >
       {/* Logo */}
       <div className="flex items-center gap-2.5">
-        <div className="w-8 h-8 rounded-xl grad-bg flex items-center justify-center">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M4 10C4 7.2 6.2 5 9 5s5 2.2 5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
-            <circle cx="6" cy="12" r="1.5" fill="white" opacity="0.7"/>
-            <circle cx="12" cy="12" r="1.5" fill="white" opacity="0.7"/>
-            <path d="M9 5V3" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
-          </svg>
-        </div>
+        <Image src="/icon.png" alt="SleepTwo" width={36} height={36} className="rounded-xl" />
         <span className="font-semibold text-lg tracking-tight" style={{ color: "var(--text)" }}>
           SleepTwo
         </span>
