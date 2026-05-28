@@ -27,10 +27,6 @@ export const metadata: Metadata = {
   authors: [{ name: "SleepTwo", url: "https://sleeptwo.app" }],
   creator: "SleepTwo",
   publisher: "SleepTwo",
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
-  },
   openGraph: {
     title: "SleepTwo — Couples Sleep Tracking App",
     description:
