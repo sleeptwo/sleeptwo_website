@@ -20,6 +20,34 @@ export const metadata: Metadata = {
   },
 };
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://sleeptwo.app/blog",
+  name: "SleepTwo Blog",
+  description:
+    "Expert articles on couples sleep tracking, sleep science, relationship health, HRV, and Apple Watch sleep data.",
+  url: "https://sleeptwo.app/blog",
+  inLanguage: "en",
+  publisher: {
+    "@type": "Organization",
+    "@id": "https://sleeptwo.app/#organization",
+    name: "SleepTwo",
+    url: "https://sleeptwo.app",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://sleeptwo.app/icon.png",
+    },
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://sleeptwo.app" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://sleeptwo.app/blog" },
+    ],
+  },
+};
+
 const CATEGORY_COLORS: Record<string, string> = {
   "Relationship Science": "var(--pb)",
   "Sleep Science": "var(--pa)",
@@ -44,6 +72,10 @@ export default function BlogPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <Nav />
       <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
         {/* Header */}

@@ -1,0 +1,117 @@
+# SleepTwo
+
+> SleepTwo is a couples sleep tracking app for iPhone and Apple Watch that gives partners a nightly sleep compatibility score, goodnight messaging, and relationship-focused sleep insights — automatically, without manual logging.
+
+SleepTwo is built for couples who want to understand how their sleep affects their relationship. It uses Apple Watch to automatically detect sleep, then computes a nightly "compatibility score" (0–100) showing how in sync both partners slept — factoring in sleep timing alignment, disturbance overlap, and heart rate variability (HRV) patterns.
+
+## What SleepTwo Is
+
+SleepTwo is an iOS app for couples that:
+- Computes a nightly sleep compatibility score (0–100) from both partners' Apple Watch data
+- Sends goodnight messages and emoji reactions synced between partners at bedtime
+- Tracks how one partner's restlessness affects the other's sleep (Sleep Ripple)
+- Analyzes heart rate variability co-regulation between partners overnight (HRV Nervous System Sync)
+- Provides a daily morning survey ("How rested do you feel? Did your partner disturb you?")
+- Tracks joint sleep streaks and weekly goals as a couple
+
+## How It Works
+
+1. Both partners wear Apple Watch to bed
+2. Apple Watch automatically detects sleep — no manual logging
+3. In the morning, SleepTwo computes each partner's sleep stages (REM, Deep, Core, Awake)
+4. A compatibility score is calculated from timing alignment, disturbance patterns, and HRV sync
+5. Partners see each other's score and sleep data in the app
+6. Optional morning survey adds subjective quality ratings
+
+## Key Features
+
+- **Nightly Compatibility Score**: A 0–100 score each morning showing how in sync both partners slept
+- **Bedtime Bridge**: Send goodnight messages and emoji reactions to your partner's lock screen
+- **Sleep Ripple Analysis**: Visualises how one partner's restless night crossed over to the other
+- **HRV Nervous System Sync**: Tracks heart rate variability co-regulation between partners (Together Pro)
+- **Full Score History & Trends**: Week, month, and all-time compatibility trends (Together Pro)
+- **Advanced Sleep Insights**: Pattern analysis and personalised relationship-sleep recommendations (Together Pro)
+- **Streak & Goal Tracking**: Joint weekly sleep goals and consecutive nights together tracking
+- **Morning Survey**: Subjective rested rating and partner disturbance rating each morning
+- **Sleep Stage Breakdown**: Deep, REM, Core, and Awake for each partner per night
+
+## Technical Requirements
+
+- iPhone with iOS 17 or later
+- Apple Watch Series 4 or later (required for both partners)
+- iCloud account (data synced between partners via Apple CloudKit — encrypted)
+- Both partners must have the SleepTwo app installed
+
+## Pricing
+
+- **Free tier**: Nightly compatibility score, Bedtime Bridge messaging, sleep streak tracking, schedule and disturbance breakdown, partner bedtime view
+- **Together Pro**: Premium subscription covering both partners under one plan — includes full score history and trends, HRV Nervous System Sync, Sleep Ripple analysis, advanced sleep insights (price to be revealed at launch)
+
+## Data & Privacy
+
+- Sleep and health data is stored in Apple CloudKit (encrypted, under each user's Apple ID)
+- Sleep data is read from Apple HealthKit solely to provide the tracking features
+- SleepTwo does not sell user data or use health data for advertising
+- Partners only share data with each other within a paired couple
+- Users can unpair at any time, which immediately stops data sharing
+
+## Target Audience
+
+- Couples who sleep in the same bed and want to understand their sleep compatibility
+- Couples in long-distance relationships who want to stay connected at bedtime
+- Partners with mismatched sleep schedules (night owls and early birds)
+- People interested in how their sleep affects their relationship health
+- Apple Watch users who want more couple-focused insight from their health data
+
+## Frequently Asked Questions
+
+**What makes SleepTwo different from other sleep apps?**
+SleepTwo is purpose-built for couples — not individuals. It computes a shared compatibility score from both partners' Apple Watch data and focuses on the relational dimension of sleep: how your bedtimes align, how disturbances cross over, and how your nervous systems co-regulate overnight.
+
+**Does SleepTwo require manual sleep logging?**
+No. SleepTwo uses Apple Watch's automatic sleep detection via HealthKit. No buttons to press, no sleep diaries to fill in.
+
+**Can couples use SleepTwo if they sleep in different locations?**
+Yes. The app syncs over iCloud (CloudKit) so partners can track their sleep compatibility even from different cities or time zones.
+
+**Do both partners need an Apple Watch?**
+Yes. Both partners need an Apple Watch (Series 4 or later) running watchOS compatible with iOS 17. SleepTwo cannot compute a compatibility score without data from both watches.
+
+**What is a sleep compatibility score?**
+The compatibility score is a 0–100 number computed each morning from: bedtime and wake time alignment, overlap in sleep and awake periods, comparative restlessness, and HRV pattern correlation. A score of 80+ means you slept highly in sync that night.
+
+**What is HRV Nervous System Sync?**
+HRV (heart rate variability) Nervous System Sync is a Together Pro feature that analyses whether partners' autonomic nervous systems showed co-regulation patterns overnight — a marker studied in relationship science as an indicator of emotional attunement.
+
+**Is SleepTwo a medical device?**
+No. SleepTwo is a consumer wellness application, not a medical device. Its sleep metrics and scores are for informational and motivational purposes only and are not intended to diagnose, treat, or prevent any health condition.
+
+**Is SleepTwo available on Android?**
+No. SleepTwo is iOS-only and requires Apple Watch. Android support is not planned at this time.
+
+## About SleepTwo
+
+- **Developer**: SleepTwo
+- **Platform**: iOS (iPhone + Apple Watch), built with SwiftUI and Apple HealthKit/CloudKit
+- **Contact**: support@sleeptwo.app
+- **Governing jurisdiction**: Hong Kong SAR
+
+## Key Pages
+
+- [Homepage](https://sleeptwo.app) — Product overview, features, pricing, download
+- [Blog](https://sleeptwo.app/blog) — 52 articles on couples sleep, sleep science, HRV, Apple Watch tracking, relationship health
+- [Privacy Policy](https://sleeptwo.app/privacy) — How SleepTwo collects, uses, and protects your data
+- [Terms of Service](https://sleeptwo.app/terms) — Usage terms and Together Pro subscription terms
+
+## Blog Topics Covered
+
+- Sleep science and relationship health
+- How sleep compatibility affects romantic relationships
+- Apple Watch sleep tracking guides and tips
+- Heart rate variability (HRV) explained for couples
+- Chronotype differences and mismatched sleep schedules
+- Sleep disorders and their effect on partners
+- Practical sleep improvement tips for couples
+- SleepTwo feature guides and how-tos
+- Life stages and sleep (new parents, pregnancy, aging couples)
+- Weekend sleep schedules and social jet lag for couples

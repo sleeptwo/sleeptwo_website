@@ -21,9 +21,29 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
 
+  // Generate keywords from category + title words for AEO
+  const categoryKeywords: Record<string, string[]> = {
+    "Sleep Science": ["sleep science", "sleep research", "sleep stages", "couples sleep"],
+    "Relationship Science": ["relationship health", "couples sleep", "sleep and relationships", "partner sleep"],
+    "Apple Watch & Tech": ["Apple Watch sleep", "sleep tracking", "watchOS", "HealthKit"],
+    "HRV & Health": ["HRV", "heart rate variability", "nervous system", "sleep health"],
+    "Sleep Tips": ["sleep tips", "better sleep", "sleep hygiene", "sleep improvement"],
+    "SleepTwo Guide": ["SleepTwo", "sleep compatibility score", "couples sleep app"],
+    "Relationship Tips": ["relationship tips", "couples", "partner sleep", "sleep habits"],
+    "Life Stages": ["sleep changes", "life stages", "sleep phases"],
+    "App Reviews": ["sleep app", "Apple Watch app", "sleep tracker review"],
+    "Sleep Issues": ["sleep problems", "insomnia", "sleep disorders", "restless sleep"],
+    "Technology": ["sleep technology", "wearables", "sleep tracking technology"],
+  };
+
   return {
-    title: `${post.title} — SleepTwo Blog`,
+    title: post.title,
     description: post.description,
+    keywords: [
+      ...(categoryKeywords[post.category] ?? []),
+      "SleepTwo",
+      "couples sleep tracking",
+    ],
     alternates: { canonical: `https://sleeptwo.app/blog/${post.slug}` },
     openGraph: {
       title: post.title,
@@ -31,13 +51,12 @@ export async function generateMetadata({
       url: `https://sleeptwo.app/blog/${post.slug}`,
       type: "article",
       publishedTime: post.publishedAt,
-      images: [{ url: post.imageUrl, width: 1080, height: 720 }],
+      siteName: "SleepTwo",
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [post.imageUrl],
     },
   };
 }
@@ -53,38 +72,93 @@ export default async function PostPage({
 
   const htmlContent = markdownToHtml(post.content);
 
-  const jsonLd = {
+  const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `https://sleeptwo.app/blog/${post.slug}#article`,
     headline: post.title,
     description: post.description,
-    image: post.imageUrl,
+    image: {
+      "@type": "ImageObject",
+      url: post.imageUrl,
+      width: 1080,
+      height: 720,
+    },
     datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
     author: {
       "@type": "Organization",
+      "@id": "https://sleeptwo.app/#organization",
       name: "SleepTwo",
       url: "https://sleeptwo.app",
     },
     publisher: {
       "@type": "Organization",
+      "@id": "https://sleeptwo.app/#organization",
       name: "SleepTwo",
       url: "https://sleeptwo.app",
       logo: {
         "@type": "ImageObject",
         url: "https://sleeptwo.app/icon.png",
+        width: 512,
+        height: 512,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://sleeptwo.app/blog/${post.slug}`,
     },
+    isPartOf: {
+      "@type": "Blog",
+      "@id": "https://sleeptwo.app/blog",
+      name: "SleepTwo Blog",
+      publisher: {
+        "@id": "https://sleeptwo.app/#organization",
+      },
+    },
+    about: {
+      "@type": "Thing",
+      name: post.category,
+    },
+    articleSection: post.category,
+    inLanguage: "en",
+    timeRequired: `PT${post.readTime}M`,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://sleeptwo.app",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://sleeptwo.app/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `https://sleeptwo.app/blog/${post.slug}`,
+      },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <Nav />
       <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
