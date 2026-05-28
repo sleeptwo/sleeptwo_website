@@ -1,3 +1,5 @@
+import ComingSoonButton from "./ComingSoonButton";
+
 const freeFeatures = [
   "Nightly compatibility score",
   "Bedtime Bridge messages",
@@ -54,13 +56,12 @@ export default function Pricing() {
               ))}
             </ul>
 
-            <a
-              href="#download"
-              className="block text-center py-3 rounded-2xl font-medium text-sm transition-all hover:opacity-80"
+            <ComingSoonButton
+              className="block w-full text-center py-3 rounded-2xl font-medium text-sm transition-all hover:opacity-80"
               style={{ background: "rgba(255,255,255,0.07)", color: "var(--text)" }}
             >
               Download Free
-            </a>
+            </ComingSoonButton>
           </div>
 
           {/* Pro */}
@@ -85,12 +86,27 @@ export default function Pricing() {
             </div>
 
             <p className="text-sm font-medium mb-1 grad-text">Together Pro</p>
-            <div className="flex items-end gap-1 mb-2">
-              <span className="font-bold text-4xl" style={{ color: "var(--text)" }}>$6.99</span>
-              <span className="text-sm pb-1" style={{ color: "var(--muted)" }}>/month</span>
+            <div className="flex items-end gap-2 mb-2">
+              <span
+                className="font-bold text-4xl select-none"
+                style={{ color: "var(--text)", filter: "blur(10px)", userSelect: "none" }}
+                aria-hidden="true"
+              >
+                $6.99
+              </span>
+              <span
+                className="text-sm pb-1 select-none"
+                style={{ color: "var(--muted)", filter: "blur(6px)" }}
+                aria-hidden="true"
+              >
+                /month
+              </span>
+              <span className="text-xs font-medium px-2 py-0.5 rounded-full mb-1" style={{ background: "rgba(124,58,237,0.2)", color: "#a78bfa" }}>
+                Reveal at launch
+              </span>
             </div>
             <p className="text-sm mb-8" style={{ color: "var(--muted)" }}>
-              Covers both partners · Cancel anytime
+              Covers both partners · Launching soon
             </p>
 
             <ul className="space-y-3 mb-8">
@@ -105,12 +121,9 @@ export default function Pricing() {
               ))}
             </ul>
 
-            <a
-              href="#download"
-              className="grad-bg block text-center py-3 rounded-2xl font-semibold text-sm text-white transition-all hover:opacity-90 hover:scale-[1.02]"
-            >
+            <ComingSoonButton className="grad-bg block w-full text-center py-3 rounded-2xl font-semibold text-sm text-white transition-all hover:opacity-90 hover:scale-[1.02]">
               Start with Together Pro
-            </a>
+            </ComingSoonButton>
           </div>
         </div>
 

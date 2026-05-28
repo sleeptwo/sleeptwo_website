@@ -1,3 +1,5 @@
+import ComingSoonButton from "./ComingSoonButton";
+
 export default function Download() {
   return (
     <section id="download" className="py-24 px-6 relative overflow-hidden">
@@ -25,8 +27,7 @@ export default function Download() {
         </p>
 
         {/* App Store button */}
-        <a
-          href="#"
+        <ComingSoonButton
           className="inline-flex items-center gap-4 glass rounded-2xl px-8 py-4 transition-all hover:scale-105 hover:border-white/20 mb-4"
           style={{ border: "1px solid rgba(255,255,255,0.1)" }}
         >
@@ -38,7 +39,7 @@ export default function Download() {
             <p className="text-xs" style={{ color: "var(--muted)" }}>Download on the</p>
             <p className="text-lg font-semibold" style={{ color: "var(--text)" }}>App Store</p>
           </div>
-        </a>
+        </ComingSoonButton>
 
         <p className="text-xs" style={{ color: "var(--muted)" }}>
           iOS 17+ · Apple Watch Series 4 or later · Free download

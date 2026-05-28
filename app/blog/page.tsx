@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ComingSoonButton from "@/components/ComingSoonButton";
 import { posts, categories } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -236,12 +237,9 @@ export default function BlogPage() {
             <p className="mb-8" style={{ color: "var(--muted)" }}>
               Download SleepTwo free and wake up to your first compatibility score tomorrow.
             </p>
-            <a
-              href="https://apps.apple.com/app/sleeptwo"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white grad-bg"
-            >
+            <ComingSoonButton className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white grad-bg transition-opacity hover:opacity-90">
               Download on the App Store
-            </a>
+            </ComingSoonButton>
           </div>
         </section>
       </main>

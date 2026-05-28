@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ComingSoonButton from "./ComingSoonButton";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -67,12 +68,9 @@ export default function Nav() {
       </div>
 
       {/* CTA */}
-      <a
-        href={sectionHref("download")}
-        className="grad-bg text-white text-sm font-medium px-5 py-2.5 rounded-full transition-opacity hover:opacity-90"
-      >
+      <ComingSoonButton className="grad-bg text-white text-sm font-medium px-5 py-2.5 rounded-full transition-opacity hover:opacity-90">
         Download Free
-      </a>
+      </ComingSoonButton>
     </nav>
   );
 }

@@ -1,4 +1,5 @@
 import PhoneMockup from "./PhoneMockup";
+import ComingSoonButton from "./ComingSoonButton";
 
 export default function Hero() {
   return (
@@ -33,16 +34,12 @@ export default function Hero() {
 
       {/* CTAs */}
       <div className="fade-up-4 flex flex-col sm:flex-row gap-4 items-center justify-center mb-20">
-        <a
-          href="#download"
-          className="grad-bg glow-a text-white font-semibold px-8 py-4 rounded-2xl text-base transition-all hover:scale-105 hover:opacity-90 flex items-center gap-2"
-        >
+        <ComingSoonButton className="grad-bg glow-a text-white font-semibold px-8 py-4 rounded-2xl text-base transition-all hover:scale-105 hover:opacity-90 flex items-center gap-2">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 2C13.866 2 17 5.134 17 9s-3.134 7-7 7S3 12.866 3 9s3.134-7 7-7z" stroke="white" strokeWidth="1.5"/>
-            <path d="M10 6v4l2.5 2.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+            <path d="M14.76 10.45c-.02-2.1 1.71-3.1 1.79-3.16-.98-1.43-2.49-1.62-3.03-1.64-1.29-.13-2.52.76-3.18.76s-1.67-.74-2.74-.73c-1.41.02-2.72.82-3.44 2.08-1.47 2.55-.38 6.32 1.06 8.39.7 1.01 1.53 2.16 2.63 2.11 1.06-.04 1.46-.69 2.74-.69s1.65.69 2.78.67c1.14-.02 1.86-1.03 2.56-2.05.15-.22.43-.67.59-.91-1.47-.56-2.41-2.14-2.39-4.23zm-2.26-7.85c.58-.71.98-1.69.87-2.67-.84.04-1.86.56-2.46 1.25-.54.62-1.01 1.62-.89 2.57.94.08 1.89-.48 2.48-1.15z" fill="white"/>
           </svg>
           Download on App Store
-        </a>
+        </ComingSoonButton>
         <a
           href="#how-it-works"
           className="glass text-white font-medium px-8 py-4 rounded-2xl text-base transition-all hover:scale-105 flex items-center gap-2"

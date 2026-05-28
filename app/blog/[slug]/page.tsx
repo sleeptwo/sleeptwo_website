@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ComingSoonButton from "@/components/ComingSoonButton";
 import { posts, getPost } from "@/lib/posts";
 import { markdownToHtml } from "@/lib/markdown";
 
@@ -177,15 +178,11 @@ export default async function PostPage({
             <p className="mb-6 text-sm" style={{ color: "var(--muted)" }}>
               SleepTwo is the only sleep app built for couples. Track your sleep
               via Apple Watch, get a nightly compatibility score, and send
-              goodnight messages — Together Pro covers both of you for
-              $6.99/month.
+              goodnight messages — all without manual logging.
             </p>
-            <a
-              href="https://apps.apple.com/app/sleeptwo"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white grad-bg"
-            >
+            <ComingSoonButton className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white grad-bg transition-opacity hover:opacity-90">
               Download Free on the App Store
-            </a>
+            </ComingSoonButton>
           </div>
 
           {/* Back to blog */}
