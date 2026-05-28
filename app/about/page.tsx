@@ -193,27 +193,6 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Team */}
-          <div>
-            <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)" }}>
-              Who we are
-            </h2>
-            <div className="space-y-4 leading-relaxed" style={{ color: "var(--muted)" }}>
-              <p>
-                SleepTwo is built by a small independent team in Hong Kong. We&apos;re
-                not a venture-backed startup with a sleep lab. We&apos;re people who
-                cared enough about this problem to spend our evenings and weekends
-                figuring it out.
-              </p>
-              <p>
-                Being small means we can move fast, stay focused, and actually
-                respond when you email us. It also means every design decision, every
-                algorithm, every word in the app was made by someone who uses it
-                every night.
-              </p>
-            </div>
-          </div>
-
           {/* Mission */}
           <div
             className="rounded-3xl p-8 md:p-10 text-center"
