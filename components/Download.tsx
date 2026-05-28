@@ -7,12 +7,9 @@ export default function Download() {
 
       <div className="max-w-2xl mx-auto text-center relative z-10">
         {/* Icon */}
-        <div className="w-20 h-20 grad-bg rounded-3xl flex items-center justify-center mx-auto mb-8 glow-a">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <path d="M20 8C24.418 8 28 11.582 28 16s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8z" fill="white" opacity="0.3"/>
-            <path d="M8 32c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
-            <path d="M20 8v-4M17 6l3-2 3 2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <div className="mx-auto mb-8 glow-both" style={{ width: 88, height: 88 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icon.png" alt="SleepTwo" className="w-full h-full rounded-[22px]" />
         </div>
 
         <h2 className="font-bold mb-4" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1 }}>
