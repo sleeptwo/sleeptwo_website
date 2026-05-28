@@ -42,6 +42,15 @@ export default function Nav() {
             {item}
           </a>
         ))}
+        <a
+          href="/blog"
+          className="text-sm transition-colors"
+          style={{ color: "var(--muted)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+        >
+          Blog
+        </a>
       </div>
 
       {/* CTA */}

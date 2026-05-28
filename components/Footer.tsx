@@ -13,6 +13,7 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex items-center gap-6 text-sm" style={{ color: "var(--muted)" }}>
+            <a href="/blog" className="hover:text-white transition-colors">Blog</a>
             <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
             <a href="/terms" className="hover:text-white transition-colors">Terms</a>
             <a href="mailto:hello@sleeptwo.app" className="hover:text-white transition-colors">Contact</a>
