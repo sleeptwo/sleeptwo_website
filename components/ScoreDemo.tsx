@@ -1,4 +1,6 @@
-export default function ScoreDemo() {
+import type { Translations } from "@/lib/translations";
+
+export default function ScoreDemo({ t }: { t: Translations["scoreDemo"] }) {
   return (
     <section className="py-24 px-6 relative overflow-hidden">
       {/* Ambient */}
@@ -7,23 +9,17 @@ export default function ScoreDemo() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left — copy */}
         <div>
-          <p className="text-sm font-medium mb-3 grad-text uppercase tracking-widest">The Score</p>
+          <p className="text-sm font-medium mb-3 grad-text uppercase tracking-widest">{t.eyebrow}</p>
           <h2 className="font-bold mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1 }}>
-            Your sleep,<br />
-            <span className="grad-text">finally in context</span>
+            {t.headline}<br />
+            <span className="grad-text">{t.headlineGrad}</span>
           </h2>
           <p className="mb-8 leading-relaxed" style={{ color: "var(--muted)" }}>
-            A solo sleep score tells you how you slept. SleepTwo&apos;s compatibility score tells you
-            how you slept <em>together</em> — whether your rhythms aligned, your disturbances matched,
-            and your deep sleep phased at the same time.
+            {t.desc}
           </p>
 
           <div className="space-y-4">
-            {[
-              { label: "Schedule Overlap", desc: "Did your sleep windows match?", pct: 88, color: "#7C3AED" },
-              { label: "Stage Harmony", desc: "Did you reach deep sleep together?", pct: 79, color: "#A855F7" },
-              { label: "Disturbance Match", desc: "Did you wake each other up?", pct: 75, color: "#DB2777" },
-            ].map((item) => (
+            {t.metrics.map((item) => (
               <div key={item.label} className="glass rounded-xl p-4">
                 <div className="flex justify-between mb-2">
                   <div>
@@ -46,15 +42,12 @@ export default function ScoreDemo() {
         {/* Right — big score circle */}
         <div className="flex flex-col items-center">
           <div className="relative">
-            {/* Outer glow ring */}
             <div
               className="absolute inset-0 rounded-full"
               style={{ background: "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)", transform: "scale(1.3)" }}
             />
             <svg width="280" height="280" viewBox="0 0 280 280">
-              {/* Background track */}
               <circle cx="140" cy="140" r="120" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="16"/>
-              {/* Score arc */}
               <circle
                 cx="140" cy="140" r="120"
                 fill="none"
@@ -72,11 +65,10 @@ export default function ScoreDemo() {
                 </linearGradient>
               </defs>
             </svg>
-            {/* Center text */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="font-bold" style={{ fontSize: 72, lineHeight: 1, color: "var(--text)" }}>82</span>
-              <span className="text-base font-medium grad-text">Synced</span>
-              <span className="text-xs mt-1" style={{ color: "var(--muted)" }}>Last night</span>
+              <span className="text-base font-medium grad-text">{t.synced}</span>
+              <span className="text-xs mt-1" style={{ color: "var(--muted)" }}>{t.lastNight}</span>
             </div>
           </div>
 

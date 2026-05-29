@@ -1,6 +1,14 @@
 import Image from "next/image";
+import type { Locale } from "@/lib/i18n";
+import type { Translations } from "@/lib/translations";
 
-export default function Footer() {
+export default function Footer({
+  locale,
+  t,
+}: {
+  locale: Locale;
+  t: Translations["footer"];
+}) {
   return (
     <footer className="px-6 py-12" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="max-w-5xl mx-auto">
@@ -13,16 +21,16 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex items-center gap-6 text-sm" style={{ color: "var(--muted)" }}>
-            <a href="/blog" className="hover:text-white transition-colors">Blog</a>
-            <a href="/about" className="hover:text-white transition-colors">About</a>
-            <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
-            <a href="/terms" className="hover:text-white transition-colors">Terms</a>
-            <a href="mailto:support@sleeptwo.app" className="hover:text-white transition-colors">Contact</a>
+            <a href={`/${locale}/blog`} className="hover:text-white transition-colors">{t.links.blog}</a>
+            <a href={`/${locale}/about`} className="hover:text-white transition-colors">{t.links.about}</a>
+            <a href={`/${locale}/privacy`} className="hover:text-white transition-colors">{t.links.privacy}</a>
+            <a href={`/${locale}/terms`} className="hover:text-white transition-colors">{t.links.terms}</a>
+            <a href="mailto:support@sleeptwo.app" className="hover:text-white transition-colors">{t.links.contact}</a>
           </div>
 
           {/* Copyright */}
           <p className="text-sm" style={{ color: "var(--muted)" }}>
-            © 2026 SleepTwo. All rights reserved.
+            {t.copyright}
           </p>
         </div>
       </div>

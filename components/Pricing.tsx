@@ -1,51 +1,33 @@
 import ComingSoonButton from "./ComingSoonButton";
+import type { Translations } from "@/lib/translations";
 
-const freeFeatures = [
-  "Nightly compatibility score",
-  "Bedtime Bridge messages",
-  "Sleep streak tracking",
-  "Schedule & disturbance breakdown",
-  "Partner bedtime view",
-];
-
-const proFeatures = [
-  "Everything in Free",
-  "Full score history & trends",
-  "HRV Nervous System Sync",
-  "Advanced sleep insights",
-  "Sleep Ripple analysis",
-  "One subscription covers both partners",
-];
-
-export default function Pricing() {
+export default function Pricing({ t }: { t: Translations["pricing"] }) {
   return (
     <section id="pricing" className="py-24 px-6" style={{ background: "var(--surface)" }}>
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-medium mb-3 grad-text uppercase tracking-widest">Pricing</p>
+          <p className="text-sm font-medium mb-3 grad-text uppercase tracking-widest">{t.eyebrow}</p>
           <h2 className="font-bold mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1 }}>
-            Simple pricing.<br />
-            <span className="grad-text">One couple, one plan.</span>
+            {t.headline}<br />
+            <span className="grad-text">{t.headlineGrad}</span>
           </h2>
-          <p style={{ color: "var(--muted)" }}>
-            No per-person pricing. One subscription covers both of you.
-          </p>
+          <p style={{ color: "var(--muted)" }}>{t.sub}</p>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Free */}
           <div className="glass rounded-3xl p-8">
-            <p className="text-sm font-medium mb-1" style={{ color: "var(--muted)" }}>Free</p>
+            <p className="text-sm font-medium mb-1" style={{ color: "var(--muted)" }}>{t.freePlan.name}</p>
             <div className="flex items-end gap-1 mb-2">
               <span className="font-bold text-4xl" style={{ color: "var(--text)" }}>$0</span>
-              <span className="text-sm pb-1" style={{ color: "var(--muted)" }}>/forever</span>
+              <span className="text-sm pb-1" style={{ color: "var(--muted)" }}>{t.freePlan.period}</span>
             </div>
-            <p className="text-sm mb-8" style={{ color: "var(--muted)" }}>Start tracking together tonight</p>
+            <p className="text-sm mb-8" style={{ color: "var(--muted)" }}>{t.freePlan.desc}</p>
 
             <ul className="space-y-3 mb-8">
-              {freeFeatures.map((f) => (
+              {t.freeFeatures.map((f) => (
                 <li key={f} className="flex items-center gap-3 text-sm">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
@@ -60,13 +42,12 @@ export default function Pricing() {
               className="block w-full text-center py-3 rounded-2xl font-medium text-sm transition-all hover:opacity-80"
               style={{ background: "rgba(255,255,255,0.07)", color: "var(--text)" }}
             >
-              Download Free
+              {t.freePlan.cta}
             </ComingSoonButton>
           </div>
 
           {/* Pro */}
           <div className="relative rounded-3xl p-8" style={{ background: "var(--surface2)" }}>
-            {/* Gradient border */}
             <div
               className="absolute inset-0 rounded-3xl -z-10"
               style={{ padding: 1, background: "linear-gradient(135deg, #7C3AED, #DB2777)", borderRadius: 24 }}
@@ -78,14 +59,14 @@ export default function Pricing() {
               style={{ background: "linear-gradient(135deg, #7C3AED, #DB2777)", padding: "1px", zIndex: -1 }}
             />
 
-            {/* Best value badge */}
+            {/* Badge */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2">
               <span className="grad-bg text-white text-xs font-semibold px-4 py-1.5 rounded-full">
-                Best value
+                {t.proPlan.badge}
               </span>
             </div>
 
-            <p className="text-sm font-medium mb-1 grad-text">Together Pro</p>
+            <p className="text-sm font-medium mb-1 grad-text">{t.proPlan.name}</p>
             <div className="flex items-end gap-2 mb-2">
               <span
                 className="font-bold text-4xl select-none"
@@ -99,18 +80,16 @@ export default function Pricing() {
                 style={{ color: "var(--muted)", filter: "blur(6px)" }}
                 aria-hidden="true"
               >
-                /month
+                {t.proPlan.period}
               </span>
               <span className="text-xs font-medium px-2 py-0.5 rounded-full mb-1" style={{ background: "rgba(124,58,237,0.2)", color: "#a78bfa" }}>
-                Reveal at launch
+                {t.proPlan.priceBadge}
               </span>
             </div>
-            <p className="text-sm mb-8" style={{ color: "var(--muted)" }}>
-              Covers both partners · Launching soon
-            </p>
+            <p className="text-sm mb-8" style={{ color: "var(--muted)" }}>{t.proPlan.desc}</p>
 
             <ul className="space-y-3 mb-8">
-              {proFeatures.map((f) => (
+              {t.proFeatures.map((f) => (
                 <li key={f} className="flex items-center gap-3 text-sm">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <circle cx="8" cy="8" r="7" fill="rgba(124,58,237,0.2)"/>
@@ -122,13 +101,13 @@ export default function Pricing() {
             </ul>
 
             <ComingSoonButton className="grad-bg block w-full text-center py-3 rounded-2xl font-semibold text-sm text-white transition-all hover:opacity-90 hover:scale-[1.02]">
-              Start with Together Pro
+              {t.proPlan.cta}
             </ComingSoonButton>
           </div>
         </div>
 
         <p className="text-center text-sm mt-8" style={{ color: "var(--muted)" }}>
-          Subscriptions managed through Apple. Cancel anytime in Settings.
+          {t.footer}
         </p>
       </div>
     </section>

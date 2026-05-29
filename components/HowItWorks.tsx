@@ -1,34 +1,17 @@
-const steps = [
-  {
-    num: "01",
-    title: "Pair with your partner",
-    desc: "One of you generates a 6-digit code. The other enters it. You're connected in under 2 minutes — no accounts, no email required.",
-    color: "#7C3AED",
-  },
-  {
-    num: "02",
-    title: "Wear your Apple Watch to bed",
-    desc: "SleepTwo reads your sleep data automatically from HealthKit. No buttons to press. Just go to sleep normally.",
-    color: "#A855F7",
-  },
-  {
-    num: "03",
-    title: "Wake up to your score",
-    desc: "Every morning, see how in sync you were — your compatibility score, breakdown by category, and a goodnight message if your partner sent one.",
-    color: "#DB2777",
-  },
-];
+import type { Translations } from "@/lib/translations";
 
-export default function HowItWorks() {
+const stepColors = ["#7C3AED", "#A855F7", "#DB2777"];
+
+export default function HowItWorks({ t }: { t: Translations["howItWorks"] }) {
   return (
     <section id="how-it-works" className="py-24 px-6" style={{ background: "var(--surface)" }}>
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-medium mb-3 grad-text uppercase tracking-widest">How it works</p>
+          <p className="text-sm font-medium mb-3 grad-text uppercase tracking-widest">{t.eyebrow}</p>
           <h2 className="font-bold" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1 }}>
-            Up and running<br />
-            <span className="grad-text">in 2 minutes</span>
+            {t.headline}<br />
+            <span className="grad-text">{t.headlineGrad}</span>
           </h2>
         </div>
 
@@ -40,12 +23,11 @@ export default function HowItWorks() {
             style={{ background: "linear-gradient(90deg, #7C3AED, #DB2777)" }}
           />
 
-          {steps.map((step) => (
+          {t.steps.map((step, i) => (
             <div key={step.num} className="flex flex-col items-center text-center">
-              {/* Number circle */}
               <div
                 className="w-20 h-20 rounded-full flex items-center justify-center mb-6 font-bold text-xl relative z-10"
-                style={{ background: `${step.color}22`, border: `2px solid ${step.color}`, color: step.color }}
+                style={{ background: `${stepColors[i]}22`, border: `2px solid ${stepColors[i]}`, color: stepColors[i] }}
               >
                 {step.num}
               </div>
@@ -63,7 +45,7 @@ export default function HowItWorks() {
             <circle cx="12" cy="12" r="2" fill="#7C3AED"/>
           </svg>
           <p className="text-sm" style={{ color: "var(--muted)" }}>
-            Requires <span style={{ color: "var(--text)" }}>Apple Watch Series 4+</span> with sleep tracking enabled
+            {t.watchNote}
           </p>
         </div>
       </div>
