@@ -102,6 +102,23 @@ export const t = {
       eyebrow: "Early users",
       headline: "Couples sleeping",
       headlineGrad: "better together",
+      items: [
+        {
+          quote: "We finally have something to talk about in the morning beyond 'did you sleep ok?' — we check the score together over coffee.",
+          name: "Sarah & James",
+          sub: "Together 3 years",
+        },
+        {
+          quote: "I didn't realise my late bedtimes were pulling our score down. Seeing it visually made me actually want to fix it.",
+          name: "Michael",
+          sub: "Using SleepTwo for 6 weeks",
+        },
+        {
+          quote: "The goodnight messages are unexpectedly sweet. We travel for work a lot — it makes us feel connected even when we're in different time zones.",
+          name: "Priya & Tom",
+          sub: "Long-distance couple",
+        },
+      ],
     },
     download: {
       h1: "Start tonight.",
@@ -259,6 +276,23 @@ export const t = {
       eyebrow: "早期用戶",
       headline: "情侶共同",
       headlineGrad: "睡得更好",
+      items: [
+        {
+          quote: "終於有話題可以在早上聊了，不再只是問「你睡得好嗎？」— 我們現在一邊喝咖啡一邊一起看分數。",
+          name: "Sarah & James",
+          sub: "交往 3 年",
+        },
+        {
+          quote: "我沒想到自己晚睡拖累了我們的分數。用圖表看到之後，我真的很想改善這個問題。",
+          name: "Michael",
+          sub: "使用 SleepTwo 6 週",
+        },
+        {
+          quote: "晚安訊息出乎意料地溫馨。我們常常因為工作出差 — 即使身處不同時區，也讓我們感到彼此相連。",
+          name: "Priya & Tom",
+          sub: "異地情侶",
+        },
+      ],
     },
     download: {
       h1: "今晚開始。",
@@ -416,6 +450,23 @@ export const t = {
       eyebrow: "早期用户",
       headline: "情侣共同",
       headlineGrad: "睡得更好",
+      items: [
+        {
+          quote: "终于有话题可以在早上聊了，不再只是问「你睡得好吗？」— 我们现在一边喝咖啡一边一起看分数。",
+          name: "Sarah & James",
+          sub: "在一起 3 年",
+        },
+        {
+          quote: "我没想到自己晚睡拖累了我们的分数。用图表看到之后，我真的很想改善这个问题。",
+          name: "Michael",
+          sub: "使用 SleepTwo 6 周",
+        },
+        {
+          quote: "晚安消息出乎意料地温馨。我们常常因为工作出差 — 即使身处不同时区，也让我们感到彼此相连。",
+          name: "Priya & Tom",
+          sub: "异地情侣",
+        },
+      ],
     },
     download: {
       h1: "今晚开始。",
