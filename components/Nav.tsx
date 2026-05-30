@@ -111,28 +111,10 @@ export default function Nav({
         </Link>
       </div>
 
-      {/* Hamburger — mobile only */}
-      <button
-        className="flex md:hidden items-center justify-center w-9 h-9 rounded-lg transition-colors"
-        style={{ color: "var(--text)", background: mobileOpen ? "rgba(255,255,255,0.08)" : "transparent" }}
-        onClick={() => setMobileOpen((o) => !o)}
-        aria-label="Toggle menu"
-      >
-        {mobileOpen ? (
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M3 3l12 12M15 3L3 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-          </svg>
-        )}
-      </button>
-
-      {/* Right side: language switcher + CTA */}
+      {/* Right side: language switcher + CTA + hamburger */}
       <div className="flex items-center gap-3">
-        {/* Language switcher */}
-        <div className="relative" ref={langRef}>
+        {/* Language switcher — desktop only (available in mobile drawer) */}
+        <div className="relative hidden md:block" ref={langRef}>
           <button
             onClick={() => setLangOpen((o) => !o)}
             className="flex items-center gap-1 text-sm px-3 py-1.5 rounded-full transition-colors"
@@ -189,9 +171,28 @@ export default function Nav({
           )}
         </div>
 
-        <ComingSoonButton className="grad-bg text-white text-sm font-medium px-5 py-2.5 rounded-full transition-opacity hover:opacity-90">
+        {/* Download CTA — desktop only (available in mobile drawer) */}
+        <ComingSoonButton className="hidden md:inline-flex grad-bg text-white text-sm font-medium px-5 py-2.5 rounded-full transition-opacity hover:opacity-90">
           {t.download}
         </ComingSoonButton>
+
+        {/* Hamburger — mobile only, always on far right */}
+        <button
+          className="flex md:hidden items-center justify-center w-9 h-9 rounded-lg transition-colors"
+          style={{ color: "var(--text)", background: mobileOpen ? "rgba(255,255,255,0.08)" : "transparent" }}
+          onClick={() => setMobileOpen((o) => !o)}
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? (
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 3l12 12M15 3L3 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+          )}
+        </button>
       </div>
     </nav>
 
