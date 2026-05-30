@@ -6,7 +6,7 @@ import { getT } from "@/lib/translations";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ComingSoonButton from "@/components/ComingSoonButton";
-import { posts, categories } from "@/lib/posts";
+import { getLocalizedPosts, categories } from "@/lib/posts";
 
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "zh-Hant" }, { locale: "zh-Hans" }];
@@ -60,8 +60,9 @@ export default async function BlogPage({
 }) {
   const { locale } = await params;
   const tr = getT(locale);
-  const featured = posts[0];
-  const rest = posts.slice(1);
+  const localizedPosts = getLocalizedPosts(locale);
+  const featured = localizedPosts[0];
+  const rest = localizedPosts.slice(1);
 
   return (
     <>

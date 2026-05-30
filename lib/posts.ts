@@ -2,6 +2,7 @@ import { posts118 } from "./posts118";
 import { posts1936 } from "./posts1936";
 import { posts3752 } from "./posts3752";
 import { POST_IMAGES } from "./post-images";
+import { getPostTranslation } from "./post-translations";
 
 export interface Post {
   slug: string;
@@ -37,6 +38,31 @@ export const posts: Post[] = rawPosts.map((p, i) => ({
 
 export function getPost(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
+}
+
+/**
+ * Returns a post with title/description/content translated for the given locale.
+ * Falls back to the English post if no translation is available.
+ */
+export function getLocalizedPost(slug: string, locale: string): Post | undefined {
+  const base = getPost(slug);
+  if (!base || locale === "en") return base;
+  const tr = getPostTranslation(slug, locale);
+  if (!tr) return base;
+  return { ...base, title: tr.title, description: tr.description, content: tr.content };
+}
+
+/**
+ * Returns all posts with titles/descriptions translated for the given locale.
+ * Content is not pre-loaded here (only needed on the detail page).
+ */
+export function getLocalizedPosts(locale: string): Post[] {
+  if (locale === "en") return posts;
+  return posts.map((p) => {
+    const tr = getPostTranslation(p.slug, locale);
+    if (!tr) return p;
+    return { ...p, title: tr.title, description: tr.description };
+  });
 }
 
 export function getPostsByCategory(category: string): Post[] {

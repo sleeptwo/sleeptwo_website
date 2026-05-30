@@ -7,7 +7,7 @@ import { getT } from "@/lib/translations";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ComingSoonButton from "@/components/ComingSoonButton";
-import { posts, getPost } from "@/lib/posts";
+import { posts, getLocalizedPost } from "@/lib/posts";
 import { markdownToHtml } from "@/lib/markdown";
 
 export async function generateStaticParams() {
@@ -23,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getPost(slug);
+  const post = getLocalizedPost(slug, locale);
   if (!post) return {};
 
   const canonical = `https://sleeptwo.app/en/blog/${slug}`;
@@ -108,7 +108,7 @@ export default async function PostPage({
   params: Promise<{ locale: Locale; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const post = getPost(slug);
+  const post = getLocalizedPost(slug, locale);
   if (!post) notFound();
 
   const tr = getT(locale);
