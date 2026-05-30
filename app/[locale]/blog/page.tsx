@@ -64,8 +64,24 @@ export default async function BlogPage({
   const featured = localizedPosts[0];
   const rest = localizedPosts.slice(1);
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: tr.blog.title,
+    description: tr.blog.desc,
+    url: `https://sleeptwo.app/${locale}/blog`,
+    numberOfItems: localizedPosts.length,
+    itemListElement: localizedPosts.map((post, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `https://sleeptwo.app/${locale}/blog/${post.slug}`,
+      name: post.title,
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <Nav locale={locale} t={tr.nav} />
       <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
         {/* Header */}

@@ -47,6 +47,13 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.publishedAt,
       siteName: "SleepTwo",
+      images: [{ url: `https://sleeptwo.app/${locale}/blog/${slug}/opengraph-image`, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [`https://sleeptwo.app/${locale}/blog/${slug}/opengraph-image`],
     },
   };
 }
@@ -246,7 +253,7 @@ export default async function PostPage({
             style={{ background: "rgba(124,58,237,0.07)", borderLeft: "3px solid var(--pa)" }}
           >
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--pa)" }}>
-              Key insight
+              {tr.blog.keyInsight}
             </p>
             <p className="key-insight-text leading-relaxed" style={{ color: "var(--text)" }}>{post.description}</p>
           </div>

@@ -144,6 +144,7 @@ export const t = {
       allPosts: "All Posts",
       readMore: "Read article",
       minRead: "min read",
+      keyInsight: "Key insight",
     },
     about: {
       eyebrow: "Our Story",
@@ -318,6 +319,7 @@ export const t = {
       allPosts: "所有文章",
       readMore: "閱讀文章",
       minRead: "分鐘閱讀",
+      keyInsight: "關鍵洞察",
     },
     about: {
       eyebrow: "我們的故事",
@@ -492,6 +494,7 @@ export const t = {
       allPosts: "所有文章",
       readMore: "阅读文章",
       minRead: "分钟阅读",
+      keyInsight: "核心洞察",
     },
     about: {
       eyebrow: "我们的故事",
