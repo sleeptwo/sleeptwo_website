@@ -45,7 +45,7 @@ SleepTwo is an iOS app for couples that:
 ## Pricing
 
 - **Free tier**: Nightly compatibility score, Bedtime Bridge messaging, sleep streak tracking, schedule and disturbance breakdown, partner bedtime view
-- **Together Pro**: Premium subscription covering both partners under one plan — includes full score history and trends, HRV Nervous System Sync, Sleep Ripple analysis, advanced sleep insights (price to be revealed at launch)
+- **Together Pro**: $6.99/month — covers both partners under one subscription. Includes full score history and trends, HRV Nervous System Sync, Sleep Ripple analysis, and advanced sleep insights
 
 ## Data & Privacy
 
@@ -98,11 +98,15 @@ No. SleepTwo is iOS-only and requires Apple Watch. Android support is not planne
 
 ## Key Pages
 
-- [Homepage](https://sleeptwo.app) — Product overview, features, pricing, download
-- [About](https://sleeptwo.app/about) — Our story, mission, and the team behind SleepTwo
-- [Blog](https://sleeptwo.app/blog) — 52 articles on couples sleep, sleep science, HRV, Apple Watch tracking, relationship health
-- [Privacy Policy](https://sleeptwo.app/privacy) — How SleepTwo collects, uses, and protects your data
-- [Terms of Service](https://sleeptwo.app/terms) — Usage terms and Together Pro subscription terms
+- [Homepage (EN)](https://sleeptwo.app/en) — Product overview, features, pricing, download
+- [Homepage (繁中)](https://sleeptwo.app/zh-Hant) — 繁體中文產品介紹
+- [Homepage (简中)](https://sleeptwo.app/zh-Hans) — 简体中文产品介绍
+- [About](https://sleeptwo.app/en/about) — Our story, mission, and the team behind SleepTwo
+- [Blog (EN)](https://sleeptwo.app/en/blog) — 52 articles on couples sleep, sleep science, HRV, Apple Watch tracking, relationship health
+- [Blog (繁中)](https://sleeptwo.app/zh-Hant/blog) — 52篇繁體中文文章：伴侶睡眠、睡眠科學、HRV、Apple Watch追蹤
+- [Blog (简中)](https://sleeptwo.app/zh-Hans/blog) — 52篇简体中文文章：伴侣睡眠、睡眠科学、HRV、Apple Watch追踪
+- [Privacy Policy](https://sleeptwo.app/en/privacy) — How SleepTwo collects, uses, and protects your data
+- [Terms of Service](https://sleeptwo.app/en/terms) — Usage terms and Together Pro subscription terms
 
 ## Blog Topics Covered
 

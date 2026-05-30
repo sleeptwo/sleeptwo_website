@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import ComingSoonButton from "@/components/ComingSoonButton";
 import { posts, getLocalizedPost } from "@/lib/posts";
 import { markdownToHtml } from "@/lib/markdown";
+import { getFAQ } from "@/lib/blog-faq";
 
 export async function generateStaticParams() {
   const locales: Locale[] = ["en", "zh-Hant", "zh-Hans"];
@@ -115,6 +116,8 @@ export default async function PostPage({
   const htmlContent = markdownToHtml(post.content);
   const sources = researchSources[post.category] ?? researchSources["Sleep Tips"];
 
+  const faqItems = getFAQ(post.category, locale);
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -123,6 +126,8 @@ export default async function PostPage({
     description: post.description,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
+    wordCount: post.readTime * 200,
+    keywords: [post.category, "SleepTwo", "couples sleep", "sleep tracking", "Apple Watch sleep"].join(", "),
     author: [
       { "@type": "Organization", "@id": "https://sleeptwo.app/#organization", name: "SleepTwo" },
     ],
@@ -133,8 +138,31 @@ export default async function PostPage({
       logo: { "@type": "ImageObject", url: "https://sleeptwo.app/icon.png", width: 512, height: 512 },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://sleeptwo.app/${locale}/blog/${slug}` },
+    isPartOf: { "@id": "https://sleeptwo.app/#website" },
     inLanguage: locale === "zh-Hant" ? "zh-TW" : locale === "zh-Hans" ? "zh-CN" : "en",
     timeRequired: `PT${post.readTime}M`,
+  };
+
+  const faqSchema = faqItems.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }
+    : null;
+
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `https://sleeptwo.app/${locale}/blog/${slug}`,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".key-insight-text", "h1"],
+    },
   };
 
   const breadcrumbSchema = {
@@ -151,6 +179,8 @@ export default async function PostPage({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <Nav locale={locale} t={tr.nav} />
       <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
         {/* Hero image */}
@@ -218,7 +248,7 @@ export default async function PostPage({
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--pa)" }}>
               Key insight
             </p>
-            <p className="leading-relaxed" style={{ color: "var(--text)" }}>{post.description}</p>
+            <p className="key-insight-text leading-relaxed" style={{ color: "var(--text)" }}>{post.description}</p>
           </div>
 
           <div className="prose-sleeptwo" dangerouslySetInnerHTML={{ __html: htmlContent }} />
