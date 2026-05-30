@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { locales, defaultLocale, isValidLocale } from "@/lib/i18n";
 
 // Paths that should NOT be locale-prefixed
-const PUBLIC_PATHS = ["/api", "/_next", "/favicon", "/icon", "/robots", "/sitemap", "/opengraph"];
+const PUBLIC_PATHS = ["/api", "/_next", "/favicon", "/icon", "/robots", "/sitemap", "/opengraph", "/social"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
