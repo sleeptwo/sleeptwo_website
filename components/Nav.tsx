@@ -19,6 +19,7 @@ export default function Nav({
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
@@ -55,6 +56,7 @@ export default function Nav({
   }, []);
 
   return (
+    <>
     <nav
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4 transition-all duration-300"
       style={{
@@ -108,6 +110,24 @@ export default function Nav({
           {t.about}
         </Link>
       </div>
+
+      {/* Hamburger — mobile only */}
+      <button
+        className="flex md:hidden items-center justify-center w-9 h-9 rounded-lg transition-colors"
+        style={{ color: "var(--text)", background: mobileOpen ? "rgba(255,255,255,0.08)" : "transparent" }}
+        onClick={() => setMobileOpen((o) => !o)}
+        aria-label="Toggle menu"
+      >
+        {mobileOpen ? (
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 3l12 12M15 3L3 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+          </svg>
+        )}
+      </button>
 
       {/* Right side: language switcher + CTA */}
       <div className="flex items-center gap-3">
@@ -174,5 +194,92 @@ export default function Nav({
         </ComingSoonButton>
       </div>
     </nav>
+
+    {/* Mobile drawer */}
+    {mobileOpen && (
+      <>
+        {/* Backdrop */}
+        <div
+          className="fixed inset-0 z-40 md:hidden"
+          style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)" }}
+          onClick={() => setMobileOpen(false)}
+        />
+        {/* Drawer */}
+        <div
+          className="fixed top-0 right-0 bottom-0 z-50 md:hidden flex flex-col"
+          style={{
+            width: "75vw",
+            maxWidth: 300,
+            background: "rgba(10,10,20,0.97)",
+            borderLeft: "1px solid rgba(255,255,255,0.08)",
+            backdropFilter: "blur(24px)",
+          }}
+        >
+          {/* Drawer header */}
+          <div className="flex items-center justify-between px-6 py-5" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+            <span className="font-semibold text-base" style={{ color: "var(--text)" }}>SleepTwo</span>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="w-8 h-8 flex items-center justify-center rounded-lg"
+              style={{ color: "var(--muted)", background: "rgba(255,255,255,0.06)" }}
+              aria-label="Close menu"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+              </svg>
+            </button>
+          </div>
+
+          {/* Nav links */}
+          <nav className="flex flex-col gap-1 px-4 pt-4 flex-1">
+            {[
+              { label: t.features,   href: sectionHref("features")     },
+              { label: t.howItWorks, href: sectionHref("how-it-works") },
+              { label: t.pricing,    href: sectionHref("pricing")      },
+              { label: t.blog,       href: `/${locale}/blog`           },
+              { label: t.about,      href: `/${locale}/about`          },
+            ].map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-colors"
+                style={{ color: "var(--text)", background: "transparent" }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Bottom: language + CTA */}
+          <div className="px-6 pb-8 pt-4 flex flex-col gap-3" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+            {/* Language picker */}
+            <div className="flex gap-2">
+              {locales.map((l) => (
+                <Link
+                  key={l}
+                  href={switchLocale(l)}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex-1 text-center py-2 rounded-lg text-sm font-medium transition-colors"
+                  style={{
+                    color: l === locale ? "var(--text)" : "var(--muted)",
+                    background: l === locale ? "rgba(124,58,237,0.2)" : "rgba(255,255,255,0.05)",
+                    border: l === locale ? "1px solid rgba(124,58,237,0.4)" : "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  {localeLabels[l]}
+                </Link>
+              ))}
+            </div>
+            <ComingSoonButton className="grad-bg text-white text-sm font-semibold py-3 rounded-xl text-center transition-opacity hover:opacity-90">
+              {t.download}
+            </ComingSoonButton>
+          </div>
+        </div>
+      </>
+    )}
+    </>
   );
 }
