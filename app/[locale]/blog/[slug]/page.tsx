@@ -26,7 +26,7 @@ export async function generateMetadata({
   const post = getLocalizedPost(slug, locale);
   if (!post) return {};
 
-  const canonical = `https://sleeptwo.app/en/blog/${slug}`;
+  const canonical = `https://sleeptwo.app/${locale}/blog/${slug}`;
 
   return {
     title: post.title,
@@ -118,7 +118,7 @@ export default async function PostPage({
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": `https://sleeptwo.app/en/blog/${slug}#article`,
+    "@id": `https://sleeptwo.app/${locale}/blog/${slug}#article`,
     headline: post.title,
     description: post.description,
     datePublished: post.publishedAt,
@@ -133,7 +133,7 @@ export default async function PostPage({
       logo: { "@type": "ImageObject", url: "https://sleeptwo.app/icon.png", width: 512, height: 512 },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://sleeptwo.app/${locale}/blog/${slug}` },
-    inLanguage: "en",
+    inLanguage: locale === "zh-Hant" ? "zh-TW" : locale === "zh-Hans" ? "zh-CN" : "en",
     timeRequired: `PT${post.readTime}M`,
   };
 
